@@ -1,0 +1,24 @@
+[submodule "elasticsearch"]
+	path = elasticsearch
+	url = https://github.com/gwdg/puppet-elasticsearch.git
+[submodule "logstash"]
+	path = logstash
+	url = https://pkasprzak@github.com/gwdg/puppet-logstash.git
+[submodule "logstashforwarder"]
+	path = logstashforwarder
+	url = https://pkasprzak@github.com/gwdg/puppet-logstashforwarder.git
+[submodule "stdlib"]
+	path = stdlib
+	url = https://github.com/gwdg/puppetlabs-stdlib.git
+[submodule "apt"]
+	path = apt
+	url = https://github.com/gwdg/puppetlabs-apt.git
+[submodule "python"]
+	path = python
+	url = https://github.com/gwdg/puppet-python.git
+[submodule "graphite"]
+	path = graphite
+	url = https://github.com/gwdg/puppet-graphite.git
+[submodule "java"]
+	path = java
+	url = https://pkasprzak@github.com/gwdg/puppetlabs-java.git
