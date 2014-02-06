@@ -22,3 +22,6 @@
 [submodule "java"]
 	path = java
 	url = https://pkasprzak@github.com/gwdg/puppetlabs-java.git
+[submodule "rabbitmq"]
+	path = rabbitmq
+	url = https://pkasprzak@github.com/gwdg/puppetlabs-rabbitmq.git
