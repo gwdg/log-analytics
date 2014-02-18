@@ -22,7 +22,10 @@ class gwdg::logging::elasticsearch(
     config      => {
       'cluster.name'                                    => 'es-cluster',
       'cluster.routing.allocation.awareness.attributes' => 'rack',
+      'node.name'                                       => $hostname,
       'network.host'                                    => $node_public_ip,
+#      'path.logs'                                       => '/var/log/elasticsearch',
+#      'path.data'                                       => '/var/lib/elasticsearch',
     }
   }
 
