@@ -25,3 +25,6 @@
 [submodule "rabbitmq"]
 	path = rabbitmq
 	url = https://pkasprzak@github.com/gwdg/puppetlabs-rabbitmq.git
+[submodule "sysctl"]
+	path = sysctl
+	url = https://pkasprzak@github.com/gwdg/puppet-sysctl.git
