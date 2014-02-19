@@ -28,3 +28,6 @@
 [submodule "sysctl"]
 	path = sysctl
 	url = https://pkasprzak@github.com/gwdg/puppet-sysctl.git
+[submodule "redis"]
+	path = redis
+	url = https://pkasprzak@github.com/gwdg/puppet-redis.git
