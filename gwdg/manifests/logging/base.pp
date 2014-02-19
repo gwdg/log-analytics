@@ -1,6 +1,7 @@
 #
 class gwdg::logging::base(
-    $verbose            = true,
+  $verbose            = true,
+  $public_interface   = 'eth4',
 ){
 
   Exec {
@@ -8,5 +9,6 @@ class gwdg::logging::base(
   }
 
   # Get IPs dynamically from interfaces
-
+  $facter_public_interface  = regsubst("ipaddress_${public_interface}",         '\.', '_')
+  $node_public_ip           = inline_template('<%= scope.lookupvar(facter_public_interface) %>')
 }

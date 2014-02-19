@@ -1,15 +1,10 @@
 #
 class gwdg::logging::elasticsearch(
-#    $package    = 'elasticsearch-0.90.11.deb',
   $package            = 'elasticsearch-1.0.0.deb',
   $public_interface   = 'eth4',
 ){
   
   include gwdg::logging::base
-
-  # Determine IPs from interfaces
-  $facter_public_interface  = regsubst("ipaddress_${public_interface}",         '\.', '_')
-  $node_public_ip           = inline_template('<%= scope.lookupvar(facter_public_interface) %>')
 
 #  sysctl::value { "fs.file-max": value => "65536"}
 
@@ -23,7 +18,7 @@ class gwdg::logging::elasticsearch(
       'cluster.name'                                    => 'es-cluster',
       'cluster.routing.allocation.awareness.attributes' => 'rack',
       'node.name'                                       => $hostname,
-      'network.host'                                    => $node_public_ip,
+      'network.host'                                    => $gwdg::logging::base::node_public_ip,
 #      'path.logs'                                       => '/var/log/elasticsearch',
 #      'path.data'                                       => '/var/lib/elasticsearch',
     }
