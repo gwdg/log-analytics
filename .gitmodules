@@ -31,3 +31,18 @@
 [submodule "redis"]
 	path = redis
 	url = https://pkasprzak@github.com/gwdg/puppet-redis.git
+[submodule "puppetdb"]
+	path = puppetdb
+	url = https://pkasprzak@github.com/gwdg/puppetlabs-puppetdb.git
+[submodule "postgresql"]
+	path = postgresql
+	url = https://pkasprzak@github.com/gwdg/puppetlabs-postgresql.git
+[submodule "inifile"]
+	path = inifile
+	url = https://pkasprzak@github.com/gwdg/puppetlabs-inifile.git
+[submodule "firewall"]
+	path = firewall
+	url = https://pkasprzak@github.com/gwdg/puppetlabs-firewall.git
+[submodule "concat"]
+	path = concat
+	url = https://pkasprzak@github.com/gwdg/puppetlabs-concat.git
