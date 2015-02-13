@@ -49,3 +49,6 @@
 [submodule "aptcacherng"]
 	path = aptcacherng
 	url = https://pkasprzak@github.com/gwdg/puppet-aptcacherng.git
+[submodule "ntp"]
+	path = ntp
+	url = https://pkasprzak@github.com/gwdg/puppetlabs-ntp.git
