@@ -10,17 +10,18 @@ class gwdg::logging::base(
 
   # Everyone also needs to be on the same clock
   class { '::ntp':
-    servers     => hiera('host::ntp::servers'),
+    servers     => hiera('base::ntp::servers'),
     restrict    => ['127.0.0.1'],
 #    interfaces  => ['127.0.0.1', ip_for_network(hiera('openstack::network::management'))],
   }
 
   # Setup apt-cacher-ng (only for vagrant for now)
-  if ! hiera('production') {
+  if ! hiera('base::production') {
     class {'apt':
       proxy_host => 'puppetmaster.cloud.gwdg.de',
       proxy_port => '3142',
-    } -> Package<||>
+ #   } -> Package<||>
+    }
   }
 
   # Get IPs dynamically from interfaces
