@@ -16,7 +16,8 @@ class gwdg::logging::elasticsearch(
     package_url       => "https://download.elasticsearch.org/elasticsearch/elasticsearch/${package}",
     status            => 'enabled',
     ensure            => 'present',
-#    service_provider  => 'init',  
+#    service_provider  => 'init',
+   
   }
 
   # Setup elasticsearch instance
