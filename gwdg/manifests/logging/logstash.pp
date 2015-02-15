@@ -1,7 +1,6 @@
 #
 class gwdg::logging::logstash(
   $redis_port   = '6379',
-  $redis_host   = $gwdg::logging::base::node_public_ip,
 ){
   
   include gwdg::logging::base
@@ -10,9 +9,9 @@ class gwdg::logging::logstash(
 
 
   # Setup redis
-  class { 'redis':
+  class { '::redis':
     port            => $redis_port,
-    bind            => $redis_host,
+    bind            => $::gwdg::logging::base::public_ip,
     manage_repo     => true,
     # Use PPA: https://launchpad.net/~chris-lea/+archive/ubuntu/redis-server
     package_ensure  => '2:2.8.19-1chl1~trusty1',
