@@ -6,12 +6,14 @@ class gwdg::logging::logstash(
   
   include gwdg::logging::base
 
-#  sysctl::value { "fs.file-max": value => "65536"}
+  sysctl::value { "fs.file-max": value => "65536"}
 
   # Setup redis
   class { 'redis':
-    conf_port => $redis_port,
-    conf_bind => $gwdg::logging::base::node_public_ip,
+    port            => $redis_port,
+    bind            => $redis_host,
+    manage_repo     => true, 
+    package_ensure  => '2.8.19',
   }
 
   # Setup java
@@ -19,8 +21,6 @@ class gwdg::logging::logstash(
 
   # Setup logstash
   class { 'logstash':
-    manage_repo     => true, 
-    repo_version    => '1.3'
-  }
+   }
 
 }
