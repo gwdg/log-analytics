@@ -8,19 +8,21 @@ class gwdg::logging::logstash(
 
   sysctl::value { "fs.file-max": value => "65536"}
 
+
   # Setup redis
   class { 'redis':
     port            => $redis_port,
     bind            => $redis_host,
-    manage_repo     => true, 
-    package_ensure  => '2.8.19',
+    manage_repo     => true,
+    # Use PPA: https://launchpad.net/~chris-lea/+archive/ubuntu/redis-server
+    package_ensure  => '2:2.8.19-1chl1~trusty1',
   }
 
   # Setup java
   class { '::java': }
 
   # Setup logstash
-  class { 'logstash':
-   }
+#  class { 'logstash':
+#   }
 
 }
