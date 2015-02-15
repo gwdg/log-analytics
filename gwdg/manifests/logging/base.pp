@@ -1,12 +1,13 @@
 #
 class gwdg::logging::base(
-  $verbose            = true,
-  $public_interface   = 'eth4',
-){
+) {
 
   Exec {
     logoutput => true,
   }
+
+  # Get public IP
+  $public_ip    = ip_for_network(hiera('base::network::public'))
 
   # Everyone also needs to be on the same clock
   class { '::ntp':
@@ -20,11 +21,9 @@ class gwdg::logging::base(
     class {'apt':
       proxy_host => 'puppetmaster.cloud.gwdg.de',
       proxy_port => '3142',
+      
+      # Prevent cycles in conjunction with apt::ppa
  #   } -> Package<||>
     }
   }
-
-  # Get IPs dynamically from interfaces
-  $facter_public_interface  = regsubst("ipaddress_${public_interface}",         '\.', '_')
-  $node_public_ip           = inline_template('<%= scope.lookupvar(facter_public_interface) %>')
 }
