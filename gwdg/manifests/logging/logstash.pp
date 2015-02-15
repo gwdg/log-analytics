@@ -7,7 +7,6 @@ class gwdg::logging::logstash(
 
   sysctl::value { "fs.file-max": value => "65536"}
 
-
   # Setup redis
   class { '::redis':
     port            => $redis_port,
@@ -23,5 +22,17 @@ class gwdg::logging::logstash(
   # Setup logstash
 #  class { 'logstash':
 #   }
+
+  # Circumvent ppa issues for redis (disabled for now)
+#  package { 'software-properties-common': }
+#  ->
+#  exec { "add-apt-repository-${name}":
+#    environment => $proxy_env,
+#    command     => "/usr/bin/add-apt-repository -y ppa:chris-lea/redis-server 2>&1 > /tmp/bla.txt",
+#        unless      => "/usr/bin/test -s ${sources_list_d}/${sources_list_d_filename}",
+#        user        => 'root',
+#        logoutput   => 'on_failure',
+#    }
+#  ~> Exec['apt_update'] -> Package['redis-server']
 
 }
