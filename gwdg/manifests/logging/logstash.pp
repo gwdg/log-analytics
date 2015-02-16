@@ -35,8 +35,7 @@ class gwdg::logging::logstash(
   }
 
   # Setup java
-  class { '::java': }
-
+  class { '::java': } -> Package['logstash']
 
   # https://download.elasticsearch.org/logstash/logstash/packages/debian/logstash-contrib_1.4.2-1-efd53ef_all.deb
   # Setup logstash
