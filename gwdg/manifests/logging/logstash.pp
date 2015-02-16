@@ -1,16 +1,18 @@
 #
 class gwdg::logging::logstash(
-  $redis_port   = '6379',
 ){
   
   include gwdg::logging::base
+  
+  $redis_host   = $::gwdg::logging::base::public_ip
+  $redis_port   = '6379'
 
   sysctl::value { "fs.file-max": value => "65536"}
 
   # Setup redis
   class { '::redis':
     port              => $redis_port,
-    bind              => $::gwdg::logging::base::public_ip,
+    bind              => $redis_host,
     
     # Use PPA: https://launchpad.net/~chris-lea/+archive/ubuntu/redis-server
     manage_repo       => true,
@@ -39,7 +41,7 @@ class gwdg::logging::logstash(
   # https://download.elasticsearch.org/logstash/logstash/packages/debian/logstash-contrib_1.4.2-1-efd53ef_all.deb
   # Setup logstash
   $logstash_package         = 'logstash_1.4.2-1-2c0f5a1_all.deb'
-  $logstash_contrib_package = 'logstash-contrib_1.4.2-1-efd53ef_al'
+  $logstash_contrib_package = 'logstash-contrib_1.4.2-1-efd53ef_al.deb'
 
   class { '::logstash':
     status              => 'enabled',
@@ -49,7 +51,11 @@ class gwdg::logging::logstash(
     
     install_contrib     => true,
     contrib_package_url => "http://download.elasticsearch.org/logstash/logstash/packages/debian/${logstash_contrib_package}",
-    
+  }
+
+  # Setup logstash shipper (logstash -> redis)
+  logstash::configfile { 'configname':
+    content => template('gwdg/logstash/logstash.shipper.conf.erb')
   }
 
   # Circumvent ppa issues for redis (disabled for now)
