@@ -35,9 +35,22 @@ class gwdg::logging::logstash(
   # Setup java
   class { '::java': }
 
+
+  # https://download.elasticsearch.org/logstash/logstash/packages/debian/logstash-contrib_1.4.2-1-efd53ef_all.deb
   # Setup logstash
-#  class { 'logstash':
-#   }
+  $logstash_package         = 'logstash_1.4.2-1-2c0f5a1_all.deb'
+  $logstash_contrib_package = 'logstash-contrib_1.4.2-1-efd53ef_al'
+
+  class { '::logstash':
+    status              => 'enabled',
+    ensure              => 'present',
+
+    package_url         => "https://download.elasticsearch.org/logstash/logstash/packages/debian/${logstash_package}",
+    
+    install_contrib     => true,
+    contrib_package_url => "http://download.elasticsearch.org/logstash/logstash/packages/debian/${logstash_contrib_package}",
+    
+  }
 
   # Circumvent ppa issues for redis (disabled for now)
 #  package { 'software-properties-common': }
