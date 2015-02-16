@@ -40,7 +40,7 @@ class gwdg::logging::logstash(
   # https://download.elasticsearch.org/logstash/logstash/packages/debian/logstash-contrib_1.4.2-1-efd53ef_all.deb
   # Setup logstash
   $logstash_package         = 'logstash_1.4.2-1-2c0f5a1_all.deb'
-  $logstash_contrib_package = 'logstash-contrib_1.4.2-1-efd53ef_al.deb'
+  $logstash_contrib_package = 'logstash-contrib_1.4.2-1-efd53ef_all.deb'
 
   class { '::logstash':
     status              => 'enabled',
