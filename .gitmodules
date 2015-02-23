@@ -61,3 +61,6 @@
 [submodule "kibana3"]
 	path = kibana3
 	url = https://pkasprzak@github.com/gwdg/puppet-kibana3.git
+[submodule "apache"]
+	path = apache
+	url = https://pkasprzak@github.com/gwdg/puppetlabs-apache.git
