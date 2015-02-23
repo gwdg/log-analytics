@@ -55,3 +55,6 @@
 [submodule "file_concat"]
 	path = file_concat
 	url = https://pkasprzak@github.com/gwdg/puppet-lib-file_concat.git
+[submodule "git"]
+	path = git
+	url = https://pkasprzak@github.com/gwdg/puppetlabs-git.git
