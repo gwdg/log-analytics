@@ -64,3 +64,6 @@
 [submodule "apache"]
 	path = apache
 	url = https://pkasprzak@github.com/gwdg/puppetlabs-apache.git
+[submodule "vcsrepo"]
+	path = vcsrepo
+	url = https://pkasprzak@github.com/gwdg/puppetlabs-vcsrepo.git
