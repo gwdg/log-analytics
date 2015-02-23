@@ -14,5 +14,9 @@ input {
 }
 
 output {
-  redis { host => "<%= scope['::gwdg::logging::logstash::redis_host'] %>" data_type => "list" key => "logstash" }
+  redis { 
+  	host 		=> "<%= scope['::gwdg::logging::logstash::redis_host'] %>" 
+  	data_type 	=> "list" 
+  	key 		=> "logstash" 
+  }
 }
