@@ -58,3 +58,6 @@
 [submodule "git"]
 	path = git
 	url = https://pkasprzak@github.com/gwdg/puppetlabs-git.git
+[submodule "kibana3"]
+	path = kibana3
+	url = https://pkasprzak@github.com/gwdg/puppet-kibana3.git
