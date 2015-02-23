@@ -18,7 +18,7 @@ class gwdg::logging::base(
 
   # Setup apt-cacher-ng (only for vagrant for now)
   if ! hiera('base::production') {
-    class {'apt':
+    class {'::apt':
       proxy_host => 'puppetmaster.cloud.gwdg.de',
       proxy_port => '3142',
       
