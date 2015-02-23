@@ -1,0 +1,14 @@
+# Logstash conf for logstash -> redis shipper
+input {
+  redis {
+    host 		=> "<%= scope['::gwdg::logging::logstash::redis_host'] %>"
+    data_type 	=> "list"
+    key 		=> "logstash"
+    codec 		=> json
+  }
+}
+output {
+  elasticsearch { 
+  	bind_host 	=> "127.0.0.1" 
+  }
+}
