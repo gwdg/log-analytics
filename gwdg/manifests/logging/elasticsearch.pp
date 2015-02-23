@@ -30,7 +30,7 @@ class gwdg::logging::elasticsearch(
       'cluster.name'                                    => hiera('elasticsearch::cluster::name'),
       'cluster.routing.allocation.awareness.attributes' => 'rack',
       'node.name'                                       => $hostname,
-      'network.host'                                    => $gwdg::logging::base::node_public_ip,
+      'network.host'                                    => $gwdg::logging::base::public_ip,
 #      'path.logs'                                       => '/var/log/elasticsearch',
 #      'path.data'                                       => '/var/lib/elasticsearch',
     },
