@@ -16,6 +16,7 @@ class gwdg::logging::elasticsearch(
     package_url       => "https://download.elasticsearch.org/elasticsearch/elasticsearch/${package}",
     status            => 'enabled',
     ensure            => 'present',
+    autoupgrade       => true,
 #    service_provider  => 'init',   
   }
 
@@ -31,6 +32,11 @@ class gwdg::logging::elasticsearch(
       'cluster.routing.allocation.awareness.attributes' => 'rack',
       'node.name'                                       => $hostname,
       'network.host'                                    => $gwdg::logging::base::public_ip,
+
+      # Needed for Kibana
+      'http.cors.enabled'                               => true,
+      'http.cors.allow-origin'                          => '/.*/',  
+    
 #      'path.logs'                                       => '/var/log/elasticsearch',
 #      'path.data'                                       => '/var/lib/elasticsearch',
     },
