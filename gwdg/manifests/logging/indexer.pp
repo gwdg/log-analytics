@@ -4,8 +4,11 @@ class gwdg::logging::indexer(
   
   include gwdg::logging::base
   
-  $redis_host   = $::gwdg::logging::base::public_ip
-  $redis_port   = '6379'
+  $redis_host = hiera('redis::host')
+  $redis_port = hiera('redis::port')
+  
+  $elasticsearch_host = hiera('elasticsearch::host')
+  $elasticsearch_port = hiera('elasticsearch::port')
 
   sysctl::value { "fs.file-max": value => "65536"}
 
@@ -14,8 +17,8 @@ class gwdg::logging::indexer(
 
   # https://download.elasticsearch.org/logstash/logstash/packages/debian/logstash-contrib_1.4.2-1-efd53ef_all.deb
   # Setup logstash
-  $logstash_package         = 'logstash_1.4.2-1-2c0f5a1_all.deb'
-  $logstash_contrib_package = 'logstash-contrib_1.4.2-1-efd53ef_all.deb'
+  $logstash_package         = hiera('logstash::package')
+  $logstash_contrib_package = hiera('logstash::contrib_package')
 
   class { '::logstash':
     status              => 'enabled',

@@ -1,10 +1,10 @@
 #
 class gwdg::logging::elasticsearch(
-  $package            = 'elasticsearch-1.4.3.deb',
-  $public_interface   = 'eth4',
 ){
   
   include gwdg::logging::base
+
+  $package = hiera('elasticsearch::package')
 
   sysctl::value { "fs.file-max": value => "65536"}
 
@@ -16,8 +16,7 @@ class gwdg::logging::elasticsearch(
     package_url       => "https://download.elasticsearch.org/elasticsearch/elasticsearch/${package}",
     status            => 'enabled',
     ensure            => 'present',
-#    service_provider  => 'init',
-   
+#    service_provider  => 'init',   
   }
 
   # Setup elasticsearch instance
@@ -28,7 +27,7 @@ class gwdg::logging::elasticsearch(
     
     # Configuration hash
     config => { 
-      'cluster.name'                                    => 'es-cluster',
+      'cluster.name'                                    => hiera('elasticsearch::cluster::name'),
       'cluster.routing.allocation.awareness.attributes' => 'rack',
       'node.name'                                       => $hostname,
       'network.host'                                    => $gwdg::logging::base::node_public_ip,
