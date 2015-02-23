@@ -1,5 +1,5 @@
 #
-class gwdg::logging::logstash(
+class gwdg::logging::shipper(
 ){
   
   include gwdg::logging::base
@@ -53,7 +53,7 @@ class gwdg::logging::logstash(
   }
 
   # Setup logstash shipper (logstash -> redis)
-  logstash::configfile { 'configname':
+  logstash::configfile { 'shipper':
     content => template('gwdg/logstash/logstash.shipper.conf.erb')
   }
 
