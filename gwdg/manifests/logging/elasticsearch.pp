@@ -29,7 +29,9 @@ class gwdg::logging::elasticsearch(
     # Configuration hash
     config => { 
       'cluster.name'                                    => hiera('elasticsearch::cluster::name'),
-      'cluster.routing.allocation.awareness.attributes' => 'rack',
+
+      # Disable as it prevents shard assignment
+#     'cluster.routing.allocation.awareness.attributes' => 'rack',
       'node.name'                                       => $hostname,
       'network.host'                                    => $gwdg::logging::base::public_ip,
 
