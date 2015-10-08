@@ -16,9 +16,6 @@
 [submodule "python"]
 	path = python
 	url = https://github.com/gwdg/puppet-python.git
-[submodule "graphite"]
-	path = graphite
-	url = https://github.com/gwdg/puppet-graphite.git
 [submodule "java"]
 	path = java
 	url = https://pkasprzak@github.com/gwdg/puppetlabs-java.git
