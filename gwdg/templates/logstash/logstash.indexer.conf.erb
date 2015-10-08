@@ -11,7 +11,24 @@ input {
 
 output {
   elasticsearch { 
-  	bind_host 	=> "<%= scope['::gwdg::logging::indexer::elasticsearch_host'] %>"
+  	host 		=> "<%= scope['::gwdg::logging::indexer::elasticsearch_host'] %>"
+	bind_host	=> "<%= scope['::gwdg::logging::base::public_ip'] %>"
   	bind_port 	=> "<%= scope['::gwdg::logging::indexer::elasticsearch_port'] %>"
+  	cluster 	=> "<%= scope['::gwdg::logging::indexer::elasticsearch_host'] %>"
   }
+  
+#  elasticsearch { 
+#       host    => "10.1.100.51"
+#    bind_host => "10.1.100.71"
+#    cluster => "es-cluster"
+#       bind_port       => "9200"
+#  }
+
+ elasticsearch_http {
+  host => "10.1.100.51"
+ }
+
+  
+  
+  
 }
